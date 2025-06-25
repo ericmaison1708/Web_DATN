@@ -25,7 +25,6 @@ df_restaurants = pd.read_csv(os.path.join(DATA_DIR, 'restaurants.csv'), usecols=
 coords_rest = np.deg2rad(df_restaurants[['latitude', 'longitude']].values)
 rest_tree = BallTree(coords_rest, metric='haversine')
 
-# If attractions.csv has no coordinates, we fallback to linear scan
 try:
     df_attractions = pd.read_csv(os.path.join(DATA_DIR, 'attractions.csv'), usecols=['Name', 'Address', 'latitude', 'longitude']).dropna()
     coords_attr = np.deg2rad(df_attractions[['latitude', 'longitude']].values)

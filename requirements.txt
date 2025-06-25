@@ -2,4 +2,6 @@ Flask
 Flask-Cors
 geopy
 pandas
+numpy
+scikit-learn
 gunicorn
