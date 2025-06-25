@@ -30,20 +30,28 @@ def search_places_chunked(filename, address, radius_km, top_n=10, chunksize=1000
     for chunk in pd.read_csv(csv_path, chunksize=chunksize):
         # bỏ các dòng thiếu tọa độ
         chunk = chunk.dropna(subset=['latitude', 'longitude'])
+
         # tính distance
         chunk['distance'] = chunk.apply(
             lambda r: geodesic(user_coord, (r['latitude'], r['longitude'])).km,
             axis=1
         )
+
         # lọc theo bán kính
         within = chunk[chunk['distance'] <= radius_km]
         if not within.empty:
+            # 🔧 FIX: Thay NaN trong các cột như Price thành None (JSON hợp lệ)
+            within = within.where(pd.notnull(within), None)
+
+            # chuyển thành dict để trả JSON
             matches.extend(within.to_dict('records'))
 
     # sort theo khoảng cách
     matches.sort(key=lambda x: x['distance'])
+
     # trả về tối đa top_n
     return matches[:top_n], None
+
 
 @app.route('/')
 def home():
