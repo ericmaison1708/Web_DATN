@@ -30,6 +30,8 @@ def search_places_chunked(filename, address, radius_km, top_n=10, chunksize=1000
     for chunk in pd.read_csv(csv_path, chunksize=chunksize):
         # bỏ các dòng thiếu tọa độ
         chunk = chunk.dropna(subset=['latitude', 'longitude'])
+        chunk = chunk.fillna(value={'Price':'', 'Email':'', 'Website':''})
+        matches.extend(chunk.to_dict('records'))
         # tính distance
         chunk['distance'] = chunk.apply(
             lambda r: geodesic(user_coord, (r['latitude'], r['longitude'])).km,
@@ -38,7 +40,6 @@ def search_places_chunked(filename, address, radius_km, top_n=10, chunksize=1000
         # lọc theo bán kính
         within = chunk[chunk['distance'] <= radius_km]
         if not within.empty:
-            # thêm vào list
             matches.extend(within.to_dict('records'))
 
     # sort theo khoảng cách

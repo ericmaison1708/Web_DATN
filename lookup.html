@@ -269,6 +269,7 @@
         try {
           const res = await fetch(`https://web-datn-vxts.onrender.com/api/${apiMap[selectedType]}?address=${encodeURIComponent(address)}&radius=10`);
           const data = await res.json();
+          console.log('RAW JSON:', data); 
           if (data.status === 'success') {
             const records = data[selectedType + 's'];
             if (records.length === 0) {
@@ -294,9 +295,8 @@
                 html += `📞 Hotline: ${item.Hotline || 'N/A'}<br/>`;
                 html += `🌐 Website: <a href="${item['Restaurant Website']}" target="_blank">${item['Restaurant Website']}</a><br/>`;
                 html += `⭐ ${item.Rating}/5 (${item.Reviewers} đánh giá)<br/>`;
-              } else { // attraction
+              } else if (selectedType === 'attraction') { 
                 html += `⏳ Thời lượng: ${item.Duration || 'N/A'}<br/>`;
-                html += `💰 Giá vé: ${item.Price || 'N/A'}<br/>`;
                 html += `📞 Điện thoại: ${item['Phone Number'] || 'N/A'}<br/>`;
                 html += `🌐 Website: <a href="${item.Website}" target="_blank">${item.Website}</a><br/>`;
                 html += `⭐ ${item.Rating}/5 (${item['Review Count']} đánh giá)<br/>`;
@@ -309,6 +309,7 @@
             resultBox.innerHTML = '❌ Không tìm thấy địa điểm.';
           }
         } catch (err) {
+          console.error('Fetch/render error:', err);
           resultBox.innerHTML = '❌ Lỗi kết nối API.';
           console.error(err);
         }
