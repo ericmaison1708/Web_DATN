@@ -239,83 +239,90 @@
 
     <!-- JS -->
     <script>
-      let selectedType = "hotel";
-      const tabButtons = document.querySelectorAll(".tab-btn");
-      tabButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          tabButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
+      // Chọn tab
+      let selectedType = 'hotel';
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = '#e0e0e0';
+            b.style.color = 'black';
+          });
+          btn.classList.add('active');
+          btn.style.background = '#2d7c2d';
+          btn.style.color = 'white';
           selectedType = btn.dataset.type;
         });
       });
 
-      function searchPlaces() {
-        const address = document.getElementById("addressInput").value;
-        const resultBox = document.getElementById("resultBox");
-        resultBox.innerHTML = "⏳ Đang tìm kiếm...";
+      async function searchPlaces() {
+        const address = document.getElementById('addressInput').value;
+        const resultBox = document.getElementById('resultBox');
+        resultBox.innerHTML = '⏳ Đang tìm kiếm...';
 
         const apiMap = {
-          hotel: "search_hotels",
-          restaurant: "search_restaurants",
-          attraction: "search_attractions",
+          hotel: 'search_hotels',
+          restaurant: 'search_restaurants',
+          attraction: 'search_attractions'
         };
 
-        fetch(
-          `https://web-datn-vxts.onrender.com/api/${
-            apiMap[selectedType]
-          }?address=${encodeURIComponent(address)}&radius=10`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.status === "success") {
-              const records = data[selectedType + "s"];
-              if (records.length === 0) {
-                resultBox.innerHTML =
-                  "⚠️ Không tìm thấy kết quả trong bán kính.";
-                return;
-              }
-              resultBox.innerHTML = records
-                .map(
-                  (item, i) => `
-                    <div style="margin-bottom: 16px; border-bottom: 1px solid #ccc; padding-bottom: 12px;">
-                      <strong>${i + 1}. ${item.Name}</strong><br/>
-                      📍 ${item.Address}<br/>
-                      ⭐ ${item["Overall Rating Value"] || "Chưa có"}<br/>
-                      💰 ${item.Price || "?"} USD<br/>
-                      📏 Cách bạn: ${item.distance.toFixed(2)} km
-                    </div>`
-                )
-                .join("");
-            } else {
-              resultBox.innerHTML = "❌ Không tìm thấy địa điểm.";
+        try {
+          const res = await fetch(`https://web-datn-vxts.onrender.com/api/${apiMap[selectedType]}?address=${encodeURIComponent(address)}&radius=10`);
+          const data = await res.json();
+          if (data.status === 'success') {
+            const records = data[selectedType + 's'];
+            if (records.length === 0) {
+              resultBox.innerHTML = '⚠️ Không tìm thấy kết quả trong bán kính.';
+              return;
             }
-          })
-          .catch((err) => {
-            resultBox.innerHTML = "❌ Lỗi kết nối API.";
-            console.error(err);
-          });
-      }
-      // Đổi màu tab khi chọn
-      document.querySelectorAll(".tab-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          document.querySelectorAll(".tab-btn").forEach((b) => {
-            b.style.background = "#e0e0e0";
-            b.style.color = "black";
-          });
-          btn.style.background = "#2d7c2d";
-          btn.style.color = "white";
-          selectedType = btn.dataset.type;
-        });
-      });
-      // Cho phép nhấn Enter để tìm kiếm
-      document
-        .getElementById("addressInput")
-        .addEventListener("keydown", function (event) {
-          if (event.key === "Enter") {
-            event.preventDefault();
-            searchPlaces();
+            let html = '';
+            records.forEach((item, i) => {
+              html += '<div style="margin-bottom:16px; border-bottom:1px solid #ccc; padding-bottom:12px; font-family:\'Philosopher\',sans-serif; color:#333;">';
+              // Tiêu đề
+              const title = (selectedType === 'restaurant') ? item['Restaurant Name'] : item.Name;
+              html += `<strong>${i+1}. ${title}</strong><br/>`;
+              html += `📍 ${item.Address}<br/>`;
+              // Fields riêng cho từng loại
+              if (selectedType === 'hotel') {
+                html += `💰 Giá: ${item.Price || 'N/A'} USD<br/>`;
+                html += `📞 Điện thoại: ${item['Phone Number'] || 'N/A'}<br/>`;
+                html += `🌐 Website: <a href="${item.Website}" target="_blank">${item.Website}</a><br/>`;
+                html += `⭐ ${item['Overall Rating Value']}/5 (${item['Overall Review Count']} đánh giá)<br/>`;
+              } else if (selectedType === 'restaurant') {
+                html += `💰 Mức giá: ${item.Price_Category || 'N/A'}<br/>`;
+                html += `⏰ Giờ mở cửa: ${item['Opening and Closing hours'] || 'N/A'}<br/>`;
+                html += `📞 Hotline: ${item.Hotline || 'N/A'}<br/>`;
+                html += `🌐 Website: <a href="${item['Restaurant Website']}" target="_blank">${item['Restaurant Website']}</a><br/>`;
+                html += `⭐ ${item.Rating}/5 (${item.Reviewers} đánh giá)<br/>`;
+              } else { // attraction
+                html += `⏳ Thời lượng: ${item.Duration || 'N/A'}<br/>`;
+                html += `💰 Giá vé: ${item.Price || 'N/A'}<br/>`;
+                html += `📞 Điện thoại: ${item['Phone Number'] || 'N/A'}<br/>`;
+                html += `🌐 Website: <a href="${item.Website}" target="_blank">${item.Website}</a><br/>`;
+                html += `⭐ ${item.Rating}/5 (${item['Review Count']} đánh giá)<br/>`;
+              }
+              html += `📏 Khoảng cách: ${item.distance} km`;
+              html += '</div>';
+            });
+            resultBox.innerHTML = html;
+          } else {
+            resultBox.innerHTML = '❌ Không tìm thấy địa điểm.';
           }
-        });
+        } catch (err) {
+          resultBox.innerHTML = '❌ Lỗi kết nối API.';
+          console.error(err);
+        }
+      }
+
+      // Bắt Enter
+      document.getElementById('addressInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault(); searchPlaces();
+        }
+      });
     </script>
+  </body>
+</html>
+
   </body>
 </html>
