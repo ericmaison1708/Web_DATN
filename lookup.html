@@ -278,7 +278,7 @@
             }
             let html = '';
             records.forEach((item, i) => {
-              html += '<div style="margin-bottom:16px; border-bottom:1px solid #ccc; padding-bottom:12px; font-family:\'Philosopher\',sans-serif; color:#333;">';
+              html += '<div style="margin-bottom:24px; border-bottom:1px solid #ccc; padding-bottom:16px; font-family:\'Philosopher\',sans-serif; color:#333; line-height:1.8; font-size:1.6rem;">';
               // Tiêu đề
               const title = (selectedType === 'restaurant') ? item['Restaurant Name'] : item.Name;
               html += `<strong>${i+1}. ${title}</strong><br/>`;
