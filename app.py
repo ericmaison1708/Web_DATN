@@ -21,7 +21,7 @@ df_hotels = pd.read_csv(os.path.join(DATA_DIR, 'hotels.csv'), usecols=['Name', '
 coords_hotels = np.deg2rad(df_hotels[['latitude', 'longitude']].values)
 hotel_tree = BallTree(coords_hotels, metric='haversine')
 
-df_restaurants = pd.read_csv(os.path.join(DATA_DIR, 'restaurants.csv'), usecols=['Name', 'Address', 'latitude', 'longitude']).dropna()
+df_restaurants = pd.read_csv(os.path.join(DATA_DIR, 'restaurants.csv'), usecols=['Restaurant Name', 'Address', 'latitude', 'longitude']).dropna()
 coords_rest = np.deg2rad(df_restaurants[['latitude', 'longitude']].values)
 rest_tree = BallTree(coords_rest, metric='haversine')
 
