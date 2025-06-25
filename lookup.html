@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tra cứu | EricTravel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header fixed">
+      <div class="main-content">
+        <div class="body">
+          <img src="./assets/img/logo.png" alt="EricTravel" class="logo" />
+          <span
+            style="font-weight: bold; font-size: 1.625rem; margin-left: 8px"
+          >
+            <span style="color: #000">Eric</span
+            ><span style="color: #2d7c2d">Travel</span>
+          </span>
+          <nav class="nav">
+            <ul>
+              <li><a href="index.html">Trang chủ</a></li>
+              <li><a href="index.html#about">Giới thiệu</a></li>
+              <li><a href="index.html#guide">Hướng dẫn</a></li>
+              <li><a href="lookup.html">Tra cứu</a></li>
+            </ul>
+          </nav>
+          <div class="action">
+            <a href="dashboard.html" class="btn btn-dashboard">Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main
+      style="
+        padding: 140px 24px 120px;
+        max-width: 1240px;
+        margin: 0 auto;
+        font-family: 'Philosopher', sans-serif;
+      "
+    >
+      <h1
+        style="
+          font-size: 32px;
+          color: #2d7c2d;
+          margin-bottom: 32px;
+          text-align: center;
+          font-weight: 700;
+        "
+      >
+        🔍 Tra cứu địa điểm du lịch gần bạn
+      </h1>
+
+      <!-- Các nút chọn loại địa điểm -->
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+          margin-bottom: 32px;
+          font-family: 'Philosopher', sans-serif;
+        "
+      >
+        <button
+          class="tab-btn"
+          data-type="hotel"
+          style="
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #2d7c2d;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Philosopher', sans-serif;
+          "
+        >
+          Khách sạn
+        </button>
+        <button
+          class="tab-btn"
+          data-type="restaurant"
+          style="
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #e0e0e0;
+            color: black;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Philosopher', sans-serif;
+          "
+        >
+          Nhà hàng
+        </button>
+        <button
+          class="tab-btn"
+          data-type="attraction"
+          style="
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #e0e0e0;
+            color: black;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Philosopher', sans-serif;
+          "
+        >
+          Điểm du lịch
+        </button>
+      </div>
+
+      <!-- Ô nhập địa chỉ -->
+      <div style="text-align: center; margin-bottom: 16px">
+        <input
+          type="text"
+          id="addressInput"
+          placeholder="Nhập địa chỉ của bạn (VD: Thạch Bàn, Long Biên, Hà Nội)"
+          style="
+            width: 400px;
+            max-width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: 'Philosopher', sans-serif;
+          "
+        />
+      </div>
+
+      <!-- Nút tìm kiếm -->
+      <div style="text-align: center">
+        <button
+          id="searchBtn"
+          style="
+            padding: 10px 24px;
+            font-size: 16px;
+            background-color: #2d7c2d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Philosopher', sans-serif;
+            font-weight: 600;
+          "
+          onclick="searchPlaces()"
+        >
+          Tìm kiếm
+        </button>
+      </div>
+
+      <!-- Kết quả trả về -->
+      <div
+        id="resultBox"
+        style="
+          margin-top: 48px;
+          max-width: 800px;
+          margin-inline: auto;
+          font-size: 1.4rem;
+          text-align: left;
+          font-family: 'Philosopher', sans-serif;
+        "
+      ></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="main-content">
+        <div class="row">
+          <div class="column">
+            <h3 class="footer-logo">
+              Eric<span class="highlight-green">Travel</span>
+            </h3>
+            <p class="slogan">Dẫn lối cho chuyến đi hoàn hảo ...</p>
+            <p>
+              <strong>Địa chỉ:</strong><br />1 Đ. Đại Cồ Việt, Bách Khoa,<br />Hai
+              Bà Trưng, Hà Nội
+            </p>
+            <p>
+              <strong>Liên hệ:</strong
+              ><br />0972610164<br />son.dm216879@sis.hust.edu.vn
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title">Dịch vụ</h3>
+            <ul class="list">
+              <li><a href="index.html#about">Phân tích du lịch</a></li>
+              <li><a href="lookup.html">Tra cứu du lịch</a></li>
+              <li><a href="dashboard.html">Dashboard báo cáo</a></li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3 class="title">Chính sách & Quy định</h3>
+            <ul class="list">
+              <li>
+                <a href="policy.html#huongdansudung">Cách thức sử dụng</a>
+              </li>
+              <li><a href="policy.html#dieukhoan">Điều khoản sử dụng</a></li>
+              <li><a href="policy.html#lienhe">Liên hệ hỗ trợ</a></li>
+            </ul>
+          </div>
+          <div class="column social-column">
+            <h3 class="title">Kết nối với tôi</h3>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/son-dao-mai/"
+                ><img src="./assets/img/linkedin.svg" alt="LinkedIn"
+              /></a>
+              <a href="https://www.instagram.com/_ericmaison/"
+                ><img src="./assets/img/instagram.svg" alt="Instagram"
+              /></a>
+              <a href="https://www.facebook.com/eric.maison17"
+                ><img src="./assets/img/facebook.svg" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025, EricTravel.inc</div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+      let selectedType = "hotel";
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedType = btn.dataset.type;
+        });
+      });
+
+      function searchPlaces() {
+        const address = document.getElementById("addressInput").value;
+        const resultBox = document.getElementById("resultBox");
+        resultBox.innerHTML = "⏳ Đang tìm kiếm...";
+
+        const apiMap = {
+          hotel: "search_hotels",
+          restaurant: "search_restaurants",
+          attraction: "search_attractions",
+        };
+
+        fetch(
+          `https://web-gproject.onrender.com/api/${
+            apiMap[selectedType]
+          }?address=${encodeURIComponent(address)}&radius=10`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status === "success") {
+              const records = data[selectedType + "s"];
+              if (records.length === 0) {
+                resultBox.innerHTML =
+                  "⚠️ Không tìm thấy kết quả trong bán kính.";
+                return;
+              }
+              resultBox.innerHTML = records
+                .map(
+                  (item, i) => `
+                    <div style="margin-bottom: 16px; border-bottom: 1px solid #ccc; padding-bottom: 12px;">
+                      <strong>${i + 1}. ${item.Name}</strong><br/>
+                      📍 ${item.Address}<br/>
+                      ⭐ ${item["Overall Rating Value"] || "Chưa có"}<br/>
+                      💰 ${item.Price || "?"} USD<br/>
+                      📏 Cách bạn: ${item.distance.toFixed(2)} km
+                    </div>`
+                )
+                .join("");
+            } else {
+              resultBox.innerHTML = "❌ Không tìm thấy địa điểm.";
+            }
+          })
+          .catch((err) => {
+            resultBox.innerHTML = "❌ Lỗi kết nối API.";
+            console.error(err);
+          });
+      }
+      // Đổi màu tab khi chọn
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab-btn").forEach((b) => {
+            b.style.background = "#e0e0e0";
+            b.style.color = "black";
+          });
+          btn.style.background = "#2d7c2d";
+          btn.style.color = "white";
+          selectedType = btn.dataset.type;
+        });
+      });
+      // Cho phép nhấn Enter để tìm kiếm
+      document
+        .getElementById("addressInput")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            searchPlaces();
+          }
+        });
+    </script>
+  </body>
+</html>

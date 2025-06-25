@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- reset css -->
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+
+    <!-- embedded font  -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- style -->
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Web GProject</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header fixed">
+      <div class="main-content">
+        <div class="body">
+          <!-- logo -->
+          <img src="./assets/img/logo.png" alt="EricTravel" class="logo" />
+          <span
+            style="font-weight: bold; font-size: 1.625rem; margin-left: 8px"
+          >
+            <span style="color: #000">Eric</span
+            ><span style="color: #2d7c2d">Travel</span>
+          </span>
+
+          <!-- nav -->
+          <nav class="nav">
+            <ul>
+              <li class="active">
+                <a href="#" id="scrollToTop">Trang chủ</a>
+              </li>
+              <li><a href="#!" id="goToAbout">Giới thiệu</a></li>
+              <li><a href="#!" id="goToGuide">Hướng dẫn</a></li>
+
+              <li><a href="lookup.html">Tra cứu</a></li>
+            </ul>
+          </nav>
+
+          <!-- btn action -->
+          <div class="action">
+            <a href="dashboard.html" class="btn btn-dashboard">Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main>
+      <div class="hero">
+        <div class="main-content">
+          <body>
+            <div class="content-block">
+              <div class="tag">
+                EricMaiSon
+                <img
+                  src="./assets/img/ericmaison.png"
+                  alt="icon"
+                  class="tag-icon"
+                />
+              </div>
+              <h2>ĐỒ ÁN <span class="highlight-green">TỐT NGHIỆP</span></h2>
+              <h1>
+                PHÂN TÍCH <span class="black-text">VÀ</span> HƯỚNG DẪN <br />
+                <span class="black-text">DU LỊCH</span>
+                <span class="highlight-green">THÔNG MINH</span>
+              </h1>
+              <p>
+                Website được xây dựng nhằm mục đích phân tích dữ liệu và hệ
+                thống hướng dẫn du lịch thông minh. Bằng việc sử dụng các công
+                cụ phân tích dữ liệu, người sử dụng sẽ có được cái nhìn sâu sắc
+                hơn về trải nghiệm du lịch tại Đông Nam Á.
+              </p>
+              <div class="btn-group">
+                <button class="btn btn-huongdan" id="btnScrollToGuide">
+                  Hướng dẫn
+                </button>
+                <button
+                  class="btn btn-outline"
+                  onclick="window.location.href='dashboard.html'"
+                >
+                  Dashboard
+                </button>
+              </div>
+              <div class="tools">
+                <span>Công cụ và trang web sử dụng</span>
+                <div class="line"></div>
+              </div>
+              <div class="tools-list">
+                <img src="./assets/img/tripadvisor.png" alt="Tripadvisor" />
+                <img src="./assets/img/python.png" alt="Python" />
+                <img src="./assets/img/powerbi.png" alt="Power BI" />
+                <img src="./assets/img/oracle.png" alt="Oracle" />
+                <img src="./assets/img/odi.png" alt="ODI" />
+              </div>
+            </div>
+            <div class="media-block">
+              <div class="circle-bg"></div>
+              <img src="./assets/img/image 34.png" alt="Astronaut" />
+            </div>
+          </body>
+        </div>
+      </div>
+
+      <div class="popular" id="about">
+        <div class="main-content">
+          <div class="popular-wrapper">
+            <!-- Trái: hình minh họa -->
+            <div class="popular-media">
+              <div class="circle-bg"></div>
+              <img
+                src="./assets/img/gioithieu.png"
+                alt="Gioi thieu EricTravel"
+              />
+            </div>
+
+            <!-- Phải: nội dung và tính năng -->
+            <div class="popular-content">
+              <div class="popular-tag">Giới thiệu</div>
+              <h2>
+                NỀN TẢNG <span class="highlight-green">PHÂN TÍCH</span><br />
+                <span class="highlight-green">DU LỊCH</span> THÔNG MINH
+              </h2>
+              <p>
+                Chào mừng bạn đến với hệ thống phân tích dữ liệu du lịch. Nền
+                tảng giúp trực quan hóa và khai thác dữ liệu từ hàng ngàn nhà
+                hàng, khách sạn và điểm tham quan trong toàn Đông Nam Á, hỗ trợ
+                các khách du lịch đưa ra quyết định chính xác theo sở thích và
+                lựa chọn của chính mình.<br /><br />
+                Khám phá xu hướng, đánh giá chất lượng dịch vụ và tối ưu trải
+                nghiệm du lịch ngay hôm nay.
+              </p>
+
+              <!-- Các nút tính năng -->
+              <div class="feature-grid">
+                <div class="feature-box">
+                  <img src="./assets/img/overview.png" alt="" />
+                  <span>Phân tích <strong>tổng quan</strong></span>
+                </div>
+                <div class="feature-box">
+                  <img src="./assets/img/restaurant.png" alt="" />
+                  <span>Phân tích <strong>nhà hàng</strong></span>
+                </div>
+                <div class="feature-box">
+                  <img src="./assets/img/hotel.png" alt="" />
+                  <span>Phân tích <strong>khách sạn</strong></span>
+                </div>
+                <div class="feature-box">
+                  <img src="./assets/img/attraction.png" alt="" />
+                  <span>Phân tích <strong>điểm tham quan</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- guide -->
+    <div class="guide" id="guide">
+      <div class="main-content">
+        <!-- Phần giới thiệu hệ thống -->
+        <section class="guide-intro">
+          <div class="guide-wrapper">
+            <!-- Left: Text -->
+            <div class="guide-text">
+              <button class="tag">Hướng dẫn</button>
+              <h2>
+                NỀN TẢNG <span class="highlight-green">PHÂN TÍCH</span><br />
+                <span class="highlight-green">DU LỊCH</span> THÔNG MINH
+              </h2>
+
+              <p>
+                Hệ thống được phát triển nhằm trực quan hóa và phân tích dữ liệu
+                du lịch từ hàng ngàn nhà hàng, khách sạn và điểm tham quan ở
+                khắp Đông Nam Á.<br /><br />
+                Bạn có thể dễ dàng truy cập và sử dụng các chức năng chính qua
+                phần hướng dẫn dưới đây.
+              </p>
+            </div>
+
+            <!-- Right: Image -->
+            <div class="guide-image">
+              <div class="circle-bg"></div>
+              <img
+                src="./assets/img/guide-hero.png"
+                alt="hướng dẫn tổng quan"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="guide-steps">
+          <div class="guide-step step-1">
+            <img
+              src="./assets/img/guide-step-1.png"
+              alt="Bước 1: Xem dashboard"
+            />
+            <p class="caption">
+              Bước 1:<br />Chọn chỉ mục để xem dữ liệu tổng quan và biểu đồ phân
+              tích
+            </p>
+          </div>
+          <div class="guide-step">
+            <img
+              src="./assets/img/guide-step-2.png"
+              alt="Bước 2: Lọc dữ liệu dashboard"
+            />
+            <p class="caption">
+              Bước 2:<br />Tùy chỉnh lọc dữ liệu theo quốc gia, khu vực hoặc
+              loại hình du lịch
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- question -->
+    <div class="question">
+      <div class="main-content">
+        <div class="question-list">
+          <!-- Item 1 -->
+          <div class="question-item">
+            <!-- Left -->
+            <div class="info">
+              <img
+                src="./assets/img/question.png"
+                alt="question"
+                class="avatar"
+              />
+              <p class="desc">Question</p>
+              <div class="dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+              </div>
+            </div>
+
+            <!-- Right -->
+            <div class="content">
+              <img
+                src="./assets/icon/Vector.svg"
+                alt="quote"
+                class="open-quotes"
+              />
+              <blockquote class="question-text">
+                Hệ thống phân tích dữ liệu này hoạt động như thế nào?
+              </blockquote>
+              <img
+                src="./assets/icon/Vector.svg"
+                alt="quote"
+                class="open-quotes"
+              />
+              <blockquote class="answer-text">
+                Hệ thống sử dụng dữ liệu được thu thập từ nguồn dữ liệu du lịch
+                lớn Tripadvisor, sau đó được xử lý, làm sạch và phân tích để
+                trực quan hóa dưới dạng biểu đồ, bảng xếp hạng và dashboard.
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="question-item">
+            <!-- Left -->
+            <div class="info">
+              <img
+                src="./assets/img/question.png"
+                alt="question"
+                class="avatar"
+              />
+              <p class="desc">Question</p>
+              <div class="dots">
+                <span class="dot" data-index="0"></span>
+                <span class="dot active" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+              </div>
+            </div>
+
+            <!-- Right -->
+            <div class="content">
+              <img
+                src="./assets/icon/Vector.svg"
+                alt="quote"
+                class="open-quotes"
+              />
+              <blockquote class="question-text">
+                Hệ thống có phù hợp với người không rành công nghệ không?
+              </blockquote>
+              <img
+                src="./assets/icon/Vector.svg"
+                alt="quote"
+                class="open-quotes"
+              />
+              <blockquote class="answer-text">
+                Có. Giao diện được thiết kế trực quan, dễ sử dụng kể cả với
+                những người không rành về công nghệ. Người dùng chỉ cần vài thao
+                tác đơn giản để xem các biểu đồ và kết luận phân tích.
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="question-item">
+            <!-- Left -->
+            <div class="info">
+              <img
+                src="./assets/img/question.png"
+                alt="question"
+                class="avatar"
+              />
+              <p class="desc">Question</p>
+              <div class="dots">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot active" data-index="2"></span>
+              </div>
+            </div>
+            <script>
+              const dots = document.querySelectorAll(".question .dot");
+              const questionList = document.querySelector(".question-list");
+
+              dots.forEach((dot) => {
+                dot.addEventListener("click", () => {
+                  const index = parseInt(dot.dataset.index);
+                  const offset = -index * 100;
+
+                  // Di chuyển bằng transform
+                  questionList.style.transform = `translateX(${offset}%)`;
+
+                  // Cập nhật trạng thái active cho dot
+                  dots.forEach((d) => d.classList.remove("active"));
+                  dot.classList.add("active");
+                });
+              });
+            </script>
+
+            <!-- Right -->
+            <div class="content">
+              <img
+                src="./assets/icon/Vector.svg"
+                alt="quote"
+                class="open-quotes"
+              />
+              <blockquote class="question-text">
+                Tôi có thể dùng dữ liệu này để lên kế hoạch du lịch cá nhân
+                không?
+              </blockquote>
+              <img
+                src="./assets/icon/Vector.svg"
+                alt="quote"
+                class="open-quotes"
+              />
+              <blockquote class="answer-text">
+                Rất phù hợp. Bạn có thể dựa vào bảng xếp hạng điểm đến, chất
+                lượng khách sạn, và phân tích đánh giá nhà hàng để chọn lựa hành
+                trình phù hợp với sở thích và ngân sách.
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <footer class="footer">
+      <div class="main-content">
+        <div class="row">
+          <!-- Column 1: Logo + slogan + địa chỉ + liên hệ -->
+          <div class="column">
+            <h3 class="footer-logo">
+              Eric<span class="highlight-green">Travel</span>
+            </h3>
+            <p class="slogan">Dẫn lối cho chuyến đi hoàn hảo ...</p>
+            <p>
+              <strong>Địa chỉ:</strong><br />
+              1 Đ. Đại Cồ Việt, Bách Khoa,<br />
+              Hai Bà Trưng, Hà Nội
+            </p>
+            <p>
+              <strong>Liên hệ:</strong><br />
+              0972610164<br />
+              son.dm216879@sis.hust.edu.vn
+            </p>
+          </div>
+
+          <!-- Column 2: Dịch vụ -->
+          <div class="column">
+            <h3 class="title">Dịch vụ</h3>
+            <ul class="list">
+              <li><a href="index.html#about">Phân tích du lịch</a></li>
+              <li><a href="lookup.html">Tra cứu du lịch</a></li>
+              <li><a href="dashboard.html">Dashboard báo cáo</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Chính sách & Quy định -->
+          <div class="column">
+            <h3 class="title">Chính sách & Quy định</h3>
+            <ul class="list">
+              <li>
+                <a href="policy.html#huongdansudung">Cách thức sử dụng</a>
+              </li>
+              <li><a href="policy.html#dieukhoan">Điều khoản sử dụng</a></li>
+              <li><a href="policy.html#lienhe">Liên hệ hỗ trợ</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Mạng xã hội -->
+          <div class="column social-column">
+            <h3 class="title">Kết nối với tôi</h3>
+            <div class="social-icons">
+              <a
+                href="https://www.linkedin.com/in/son-dao-mai/"
+                aria-label="LinkedIn"
+                ><img src="./assets/img/linkedin.svg" alt="LinkedIn"
+              /></a>
+              <a
+                href="https://www.instagram.com/_ericmaison/"
+                aria-label="Instagram"
+                ><img src="./assets/img/instagram.svg" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.facebook.com/eric.maison17"
+                aria-label="Facebook"
+                ><img src="./assets/img/facebook.svg" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025, EricTravel.inc</div>
+    </footer>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

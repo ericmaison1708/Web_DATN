@@ -1,0 +1,749 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* khoi phuc lai co chu mac dinh */
+
+body {
+  font-size: 1.6rem;
+  font-family: "Philosopher", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ======================= common ============================== */
+a {
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 7.81rem;
+  padding: 0.5rem 1.5rem;
+  line-height: 1.5rem;
+  color: #fff;
+  font-family: Philosopher;
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 0.5rem;
+  background: #2d7c2d;
+}
+
+.main-content {
+  width: 1240px;
+  max-width: calc(100% - 48px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ======================= header ============================== */
+.header.fixed {
+  position: sticky;
+  top: -17px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .body {
+  display: flex;
+  align-items: center;
+  padding: 25px 0 8px;
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.nav ul {
+  display: flex;
+}
+
+.nav a {
+  position: relative;
+  color: #000;
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 8px 21px;
+}
+
+.nav a:hover {
+  color: #171100;
+  font-weight: 700;
+  text-shadow: 0.5px 0 0 currentColor;
+}
+
+.nav li.active a::after {
+  position: absolute;
+  left: 21px;
+  bottom: 6px;
+  content: "";
+  display: block;
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #171100;
+}
+
+.header .btn-dashboard {
+  /* min-width: 125px; */
+}
+
+.header .action {
+  margin-left: 86px;
+}
+
+/* ======================= hero ============================== */
+.hero {
+  /* background-color: #e9f0e9; */
+  padding: 60px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+}
+
+.hero .main-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero .content-block {
+  flex: 1;
+  max-width: 800px;
+  font-family: "Philosopher", sans-serif;
+  font-weight: 700;
+  color: #2d7c2d;
+}
+
+.hero .tag {
+  margin-top: 172px;
+  background-color: #a6ce8c;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 1.3rem;
+  color: #1b4d1b;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 29px;
+}
+
+.hero .tag-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hero h2 {
+  font-weight: 400;
+  font-size: 40px;
+  margin-bottom: 19px;
+  color: #000;
+}
+
+.highlight-green {
+  color: #2d7c2d;
+}
+
+.hero h1 {
+  font-weight: 700;
+  font-size: 50px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.black-text {
+  color: #000;
+}
+
+.hero .content-block p {
+  width: 610px;
+  height: 123px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 11px;
+}
+
+.hero .btn-group {
+  display: flex;
+  gap: 77px;
+  margin-bottom: 137px;
+}
+
+.hero .btn-outline {
+  background: transparent;
+  color: #2d7c2d;
+  border: 2px solid #2d7c2d;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 1.625rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero .btn-outline:hover {
+  background-color: #2d7c2d;
+  color: #fff;
+}
+
+.hero .btn-huongdan {
+  background-color: #2d7c2d;
+  color: #fff;
+  padding: 14px 24px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  font-size: 1.625rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero .btn-huongdan:hover {
+  background-color: #9b9b03;
+}
+
+/* Active: hiệu ứng khi click xuống */
+.hero .btn-huongdan:active {
+  transform: scale(0.97);
+  background-color: #184c18;
+}
+
+.hero .tools {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.3rem;
+  color: #2d7c2d;
+  margin-bottom: 25px;
+}
+
+.hero .tools span {
+  white-space: nowrap;
+}
+
+.hero .line {
+  flex-grow: 1;
+  width: 200px;
+  height: 2px;
+  background-color: #2d7c2d;
+}
+
+.hero .tools-list img {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  margin-left: 31px;
+}
+
+.hero .media-block {
+  max-width: 42%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero .media-block {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero .media-block img {
+  width: 650px;
+  height: 650px;
+  position: relative;
+  border-radius: 300px;
+  z-index: 10;
+}
+
+/* Vòng tròn nền */
+.hero .circle-bg {
+  position: absolute;
+  width: 960px;
+  height: 960px;
+  border-radius: 50%;
+  border: 200px solid rgba(45, 124, 45, 0.15);
+  background: transparent;
+  z-index: 1;
+}
+
+/* ======================= footer ============================== */
+.footer {
+  background: #f0f8f0;
+  border-top: 2px solid #2d7c2d;
+  padding: 100px 0 20px;
+  font-family: "Philosopher", sans-serif;
+  color: #2d7c2d;
+  font-size: 1.3rem;
+}
+
+.footer .main-content {
+  max-width: 1440px;
+  max-height: 740px;
+  margin: 0 auto;
+}
+
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer .column {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-logo {
+  font-weight: 400;
+  font-size: 32px;
+  margin-bottom: 0px;
+  color: #000;
+}
+
+.slogan {
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.footer strong {
+  color: #000;
+  font-family: Philosopher;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1.5rem;
+}
+
+.footer p {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: Philosopher;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1.5rem; /* Thêm khoảng cách dưới mỗi đoạn */
+}
+
+.footer .title {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+  color: #2d7c2d;
+}
+
+.footer .list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .list li {
+  margin-bottom: 12px;
+}
+
+.footer .list li a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer .list li a:hover {
+  color: #1a4b1a;
+  text-decoration: underline;
+}
+
+/* Social column */
+.social-column .social-icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.social-icons a img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) saturate(100%) invert(28%) sepia(68%) saturate(538%)
+    hue-rotate(83deg) brightness(86%) contrast(86%);
+  transition: filter 0.3s ease;
+}
+
+.social-icons a:hover img {
+  filter: brightness(0) saturate(100%) invert(43%) sepia(82%) saturate(387%)
+    hue-rotate(105deg) brightness(90%) contrast(92%);
+}
+
+.footer-bottom {
+  text-align: center;
+  background-color: #2d7c2d;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  margin-top: 30px;
+}
+
+/* ======================= popular ============================== */
+.popular {
+  height: 1024px;
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.popular .popular-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.popular .popular-media {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.popular .popular-media img {
+  max-width: 100%;
+  height: auto;
+}
+
+.popular .popular-content {
+  flex: 1;
+}
+
+.popular .popular-tag {
+  display: inline-block;
+  border-radius: 8px;
+  background: rgba(45, 124, 45, 0.2);
+  color: #2d7c2d;
+  font-weight: 600;
+  padding: 6px 16px;
+  font-size: 16px;
+  margin-bottom: 45px;
+}
+
+.popular .popular-content h2 {
+  width: 485px;
+  height: 111px;
+  flex-shrink: 0;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: normal;
+  color: #000;
+  margin-bottom: 18px;
+}
+
+.popular .highlight-green {
+  color: #2d7c2d;
+}
+
+.popular .popular-content p {
+  width: 525px;
+  height: 191px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Philosopher;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+
+/* Grid các tính năng */
+.popular .feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.popular .feature-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 36px 4px 37px 18px;
+  border: 2px solid #2d7c2d;
+  border-radius: 12px;
+  background-color: #f6fbf6;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  height: 120px;
+}
+
+.popular .feature-box:hover {
+  background-color: #5a975a;
+}
+
+.popular .feature-box img {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.popular .feature-box span {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000;
+}
+
+.popular .circle-bg {
+  position: absolute;
+  width: 750px;
+  height: 750px;
+  border-radius: 50%;
+  border: 130px solid rgba(45, 124, 45, 0.15);
+  background: transparent;
+  z-index: 1;
+}
+
+/* ======================= guide ============================== */
+.guide {
+  padding: 80px 0;
+  background-color: #ffffff;
+  height: 2140px;
+}
+
+.guide .circle-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* căn giữa chính xác */
+  width: 680px;
+  height: 680px;
+  border-radius: 50%;
+  border: 130px solid rgba(45, 124, 45, 0.15);
+  background: transparent;
+  z-index: 1;
+}
+
+.guide .main-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* === Phần giới thiệu === */
+.guide-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.guide-text {
+  flex: 1;
+}
+
+.guide-text .tag {
+  font-family: Philosopher;
+  background-color: #d8f0d8;
+  color: #2d7c2d;
+  padding: 6px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 107px;
+}
+
+.guide-text h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  margin-bottom: 47px;
+}
+
+.highlight-green {
+  color: #2d7c2d;
+}
+
+.guide-text p {
+  width: 525px;
+  height: 72px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Philosopher;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* === Phần hình bên phải === */
+.guide-image {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  text-align: center;
+}
+
+.guide-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* === Phần hướng dẫn từng bước === */
+.guide-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.guide-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.guide-step img {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.guide-step .caption {
+  font-size: 1.4rem;
+  text-align: center;
+  color: #444;
+  line-height: 1.6;
+}
+
+.guide-steps .step-1 img {
+  margin-top: 100px;
+}
+
+/* ======================= question ============================== */
+.question {
+  background: #005100;
+  padding: 80px 0;
+  min-height: 433px;
+  transition: height 0.3s ease;
+  overflow: hidden;
+}
+
+.question-list {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.question-item {
+  flex: 0 0 100%;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 0 24px;
+}
+
+.question .info {
+  flex: 0 0 120px;
+  text-align: center;
+  color: #fff;
+}
+
+.question .avatar {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.question .desc {
+  margin-top: 18px;
+  color: #f7f7f7;
+  font-family: Philosopher;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.question .dots {
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.question .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #30ba0d;
+  cursor: pointer;
+}
+
+.question .dot.active {
+  background-color: orange;
+  cursor: default;
+}
+
+.question .content {
+  flex: 1;
+  color: #fff;
+  font-style: italic;
+  position: relative;
+  margin-left: 280px;
+}
+
+.question .open-quotes {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.question blockquote {
+  width: 740px;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+}
+
+.question .question-text {
+  font-weight: 400;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 40px;
+  margin-bottom: 40px;
+}
+
+.question .answer-text {
+  color: #fff;
+  font-family: Philosopher;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 40px;
+}

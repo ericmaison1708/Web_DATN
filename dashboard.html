@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - EricTravel</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .tab-buttons {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .tab-buttons button {
+        font-family: Philosopher;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background: #2d7c2d;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .tab-buttons button.active {
+        background: #1b4d1b;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      iframe {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header giống trang chính -->
+    <header class="header fixed">
+      <div class="main-content">
+        <div class="body">
+          <img src="./assets/img/logo.png" alt="EricTravel" class="logo" />
+          <span
+            style="font-weight: bold; font-size: 1.625rem; margin-left: 8px"
+          >
+            <span style="color: #000">Eric</span
+            ><span style="color: #2d7c2d">Travel</span>
+          </span>
+
+          <!-- CẬP NHẬT NAVIGATION -->
+          <nav class="nav">
+            <ul>
+              <li><a href="index.html">Trang chủ</a></li>
+              <li><a href="index.html#about">Giới thiệu</a></li>
+              <li><a href="index.html#guide">Hướng dẫn</a></li>
+              <li><a href="lookup.html">Tra cứu</a></li>
+              <!-- ĐÃ THÊM -->
+            </ul>
+          </nav>
+
+          <div class="action">
+            <a href="dashboard.html" class="btn btn-dashboard">Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Nội dung dashboard -->
+    <main style="padding: 120px 24px 80px">
+      <div class="main-content">
+        <h1 style="font-size: 32px; color: #2d7c2d; margin-bottom: 32px">
+          Dashboard Phân Tích Du Lịch
+        </h1>
+
+        <!-- Tab Buttons -->
+        <div class="tab-buttons">
+          <button class="active" data-tab="hotel">Khách sạn</button>
+          <button data-tab="restaurant">Nhà hàng</button>
+          <button data-tab="attraction">Điểm du lịch</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="hotel" class="tab-content active">
+          <iframe
+            title="GProject_Hotel"
+            width="1140"
+            height="541.25"
+            src="https://app.powerbi.com/reportEmbed?reportId=72991f46-c51e-45a2-b688-b933372418c7&autoAuth=true&ctid=f01e930a-b52e-42b1-b70f-a8882b5d043b"
+            frameborder="0"
+            allowfullscreen="true"
+          ></iframe>
+        </div>
+        <div id="restaurant" class="tab-content">
+          <iframe
+            title="GProject_Restaurant"
+            width="1140"
+            height="541.25"
+            src="https://app.powerbi.com/reportEmbed?reportId=f0a41024-86fb-40a3-afa0-af5b6f09e586&autoAuth=true&ctid=f01e930a-b52e-42b1-b70f-a8882b5d043b"
+            frameborder="0"
+            allowfullscreen="true"
+          ></iframe>
+        </div>
+        <div id="attraction" class="tab-content">
+          <iframe
+            title="GProject_Attraction"
+            width="1140"
+            height="541.25"
+            src="https://app.powerbi.com/reportEmbed?reportId=1d1e7b6a-c8fa-45bb-8c77-c1b65a830b07&autoAuth=true&ctid=f01e930a-b52e-42b1-b70f-a8882b5d043b"
+            frameborder="0"
+            allowfullscreen="true"
+          ></iframe>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer giống trang chính -->
+    <footer class="footer">
+      <div class="main-content">
+        <div class="row">
+          <div class="column">
+            <h3 class="footer-logo">
+              Eric<span class="highlight-green">Travel</span>
+            </h3>
+            <p class="slogan">Dẫn lối cho chuyến đi hoàn hảo ...</p>
+            <p>
+              <strong>Địa chỉ:</strong><br />1 Đ. Đại Cồ Việt, Bách Khoa,<br />Hai
+              Bà Trưng, Hà Nội
+            </p>
+            <p>
+              <strong>Liên hệ:</strong
+              ><br />0972610164<br />son.dm216879@sis.hust.edu.vn
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title">Dịch vụ</h3>
+            <ul class="list">
+              <li><a href="index.html#about">Phân tích du lịch</a></li>
+              <li><a href="lookup.html">Tra cứu du lịch</a></li>
+              <li><a href="dashboard.html">Dashboard báo cáo</a></li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3 class="title">Chính sách & Quy định</h3>
+            <ul class="list">
+              <li>
+                <a href="policy.html#huongdansudung">Cách thức sử dụng</a>
+              </li>
+              <li><a href="policy.html#dieukhoan">Điều khoản sử dụng</a></li>
+              <li><a href="policy.html#lienhe">Liên hệ hỗ trợ</a></li>
+            </ul>
+          </div>
+          <div class="column social-column">
+            <h3 class="title">Kế tối với tôi</h3>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/son-dao-mai/"
+                ><img src="./assets/img/linkedin.svg" alt="LinkedIn"
+              /></a>
+              <a href="https://www.instagram.com/_ericmaison/"
+                ><img src="./assets/img/instagram.svg" alt="Instagram"
+              /></a>
+              <a href="https://www.facebook.com/eric.maison17"
+                ><img src="./assets/img/facebook.svg" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025, EricTravel.inc</div>
+    </footer>
+
+    <script>
+      const tabButtons = document.querySelectorAll(".tab-buttons button");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tab = btn.getAttribute("data-tab");
+
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          tabContents.forEach((content) => {
+            content.classList.remove("active");
+            if (content.id === tab) content.classList.add("active");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
