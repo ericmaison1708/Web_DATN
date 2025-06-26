@@ -3,6 +3,7 @@ from flask_cors import CORS
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 import pandas as pd
+import requests
 import os
 
 app = Flask(__name__)
@@ -13,8 +14,7 @@ geolocator = Nominatim(user_agent="erictravel_backend", timeout=10)
 
 # Đường dẫn tới thư mục chứa CSV
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
-
-import requests
+os.makedirs(DATA_DIR, exist_ok=True)
 
 def download_if_not_exists(url, local_path):
     if not os.path.exists(local_path):
@@ -24,16 +24,15 @@ def download_if_not_exists(url, local_path):
             f.write(r.content)
         print(f"Downloaded {local_path}")
 
-# Link Google Drive direct download (sẽ thay bằng link của bạn)
-HOTEL_CSV_URL = 'https://drive.google.com/file/d/1BpuhPSRhz6HQVHL4NEhj59KlpYPad-gY/view?usp=sharing'
-RESTAURANT_CSV_URL = 'https://drive.google.com/file/d/1NJe9IDuwCEqdX7IcJVGq0b81b-tYKYwg/view?usp=sharing'
+# ✅ Thay các ID này bằng ID thực từ Google Drive của bạn
+HOTEL_CSV_URL = 'https://drive.google.com/uc?export=download&id=1BpuhPSRhz6HQVHL4NEhj59KlpYPad-gY'
+RESTAURANT_CSV_URL = 'https://drive.google.com/uc?export=download&id=1NJe9IDuwCEqdX7IcJVGq0b81b-tYKYwg'
+ATTRACTION_CSV_URL = 'https://drive.google.com/file/d/1BUbRRCKJKjSwlPbbAC1c2kJbhn_8rth5/view?usp=sharing'  # 👈 sửa ID này
 
-# Tạo thư mục nếu chưa có
-os.makedirs(DATA_DIR, exist_ok=True)
-
-# Tải file nếu chưa tồn tại
+# ✅ Tải cả 3 file nếu chưa tồn tại
 download_if_not_exists(HOTEL_CSV_URL, os.path.join(DATA_DIR, 'hotels.csv'))
 download_if_not_exists(RESTAURANT_CSV_URL, os.path.join(DATA_DIR, 'restaurants.csv'))
+download_if_not_exists(ATTRACTION_CSV_URL, os.path.join(DATA_DIR, 'attractions.csv'))
 
 def search_places_chunked(filename, address, radius_km, top_n=10, chunksize=10000):
     """
