@@ -3,7 +3,7 @@ from flask_cors import CORS
 from opencage.geocoder import OpenCageGeocode
 from geopy.distance import geodesic
 import pandas as pd
-import requests
+import gdown
 import os
 
 app = Flask(__name__)
@@ -17,23 +17,20 @@ geocoder = OpenCageGeocode(OPENCAGE_API_KEY)
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 os.makedirs(DATA_DIR, exist_ok=True)
 
-def download_if_not_exists(url, local_path):
+def download_if_not_exists_from_drive(file_id, local_path):
     if not os.path.exists(local_path):
-        print(f"Downloading {local_path} ...")
-        r = requests.get(url)
-        with open(local_path, 'wb') as f:
-            f.write(r.content)
-        print(f"Downloaded {local_path}")
+        print(f"Downloading {local_path} from Google Drive ...")
+        gdown.download(id=file_id, output=local_path, quiet=False)
 
 # ✅ Thay các ID này bằng ID thực từ Google Drive của bạn
 HOTEL_CSV_URL = 'https://drive.google.com/uc?export=download&id=1BpuhPSRhz6HQVHL4NEhj59KlpYPad-gY'
 RESTAURANT_CSV_URL = 'https://drive.google.com/uc?export=download&id=1NJe9IDuwCEqdX7IcJVGq0b81b-tYKYwg'
-ATTRACTION_CSV_URL = 'https://drive.google.com/file/d/1BUbRRCKJKjSwlPbbAC1c2kJbhn_8rth5/view?usp=sharing'  # 👈 sửa ID này
+ATTRACTION_CSV_URL = 'https://drive.google.com/file/d/1BUbRRCKJKjSwlPbbAC1c2kJbhn_8rth5/view?usp=sharing'  
 
 # ✅ Tải cả 3 file nếu chưa tồn tại
-download_if_not_exists(HOTEL_CSV_URL, os.path.join(DATA_DIR, 'hotels.csv'))
-download_if_not_exists(RESTAURANT_CSV_URL, os.path.join(DATA_DIR, 'restaurants.csv'))
-download_if_not_exists(ATTRACTION_CSV_URL, os.path.join(DATA_DIR, 'attractions.csv'))
+download_if_not_exists_from_drive('1BpuhPSRhz6HQVHL4NEhj59KlpYPad-gY', os.path.join(DATA_DIR, 'hotels.csv'))
+download_if_not_exists_from_drive('1NJe9IDuwCEqdX7IcJVGq0b81b-tYKYwg', os.path.join(DATA_DIR, 'restaurants.csv'))
+download_if_not_exists_from_drive('1BUbRRCKJKjSwlPbbAC1c2kJbhn_8rth5', os.path.join(DATA_DIR, 'attractions.csv'))
 
 def search_places_chunked(filename, address, radius_km, top_n=10, chunksize=10000):
     """
