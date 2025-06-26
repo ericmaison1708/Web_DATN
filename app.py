@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from geopy.geocoders import Nominatim
+from opencage.geocoder import OpenCageGeocode
 from geopy.distance import geodesic
 import pandas as pd
 import requests
@@ -9,8 +9,9 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Khởi tạo geolocator
-geolocator = Nominatim(user_agent="erictravel_backend", timeout=10)
+# Khởi tạo OpenCage Geocoder
+OPENCAGE_API_KEY = "71e47c02d8bc430fb418c4a9046bdb73"
+geocoder = OpenCageGeocode(OPENCAGE_API_KEY)
 
 # Đường dẫn tới thư mục chứa CSV
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
@@ -39,10 +40,10 @@ def search_places_chunked(filename, address, radius_km, top_n=10, chunksize=1000
     Đọc CSV theo chunks, tính khoảng cách đến address, 
     giữ lại những row trong radius_km, rồi sort & cắt top_n.
     """
-    loc = geolocator.geocode(address)
-    if not loc:
+    geo_result = geocoder.geocode(address)
+    if not geo_result:
         return None, "Không tìm thấy địa điểm"
-    user_coord = (loc.latitude, loc.longitude)
+    user_coord = (geo_result[0]['geometry']['lat'], geo_result[0]['geometry']['lng'])
 
     matches = []
     csv_path = os.path.join(DATA_DIR, filename)
