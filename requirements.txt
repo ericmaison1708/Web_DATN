@@ -4,3 +4,5 @@ geopy
 pandas
 numpy
 gunicorn
+requests
+os
