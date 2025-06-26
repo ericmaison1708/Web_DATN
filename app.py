@@ -14,6 +14,27 @@ geolocator = Nominatim(user_agent="erictravel_backend", timeout=10)
 # Đường dẫn tới thư mục chứa CSV
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
+import requests
+
+def download_if_not_exists(url, local_path):
+    if not os.path.exists(local_path):
+        print(f"Downloading {local_path} ...")
+        r = requests.get(url)
+        with open(local_path, 'wb') as f:
+            f.write(r.content)
+        print(f"Downloaded {local_path}")
+
+# Link Google Drive direct download (sẽ thay bằng link của bạn)
+HOTEL_CSV_URL = 'https://drive.google.com/file/d/1BpuhPSRhz6HQVHL4NEhj59KlpYPad-gY/view?usp=sharing'
+RESTAURANT_CSV_URL = 'https://drive.google.com/file/d/1NJe9IDuwCEqdX7IcJVGq0b81b-tYKYwg/view?usp=sharing'
+
+# Tạo thư mục nếu chưa có
+os.makedirs(DATA_DIR, exist_ok=True)
+
+# Tải file nếu chưa tồn tại
+download_if_not_exists(HOTEL_CSV_URL, os.path.join(DATA_DIR, 'hotels.csv'))
+download_if_not_exists(RESTAURANT_CSV_URL, os.path.join(DATA_DIR, 'restaurants.csv'))
+
 def search_places_chunked(filename, address, radius_km, top_n=10, chunksize=10000):
     """
     Đọc CSV theo chunks, tính khoảng cách đến address, 
